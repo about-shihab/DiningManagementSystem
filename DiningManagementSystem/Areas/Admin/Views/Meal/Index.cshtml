@@ -1,0 +1,160 @@
+﻿@model IEnumerable<BOL.Meal>
+
+@{
+    ViewBag.Title = "Meal";
+}
+
+
+
+<br />
+<br />
+<br/>
+<h5>Generate Todays meal</h5>
+
+<p>
+    @using (Html.BeginForm("Create", "Meal", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+               
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Generate" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <br />
+    <br/>
+    
+    
+    
+</p>
+@if (ViewBag.Exist != 0)
+{
+    <h4>Todays Total Meal Details</h4>
+    <table class="table table-striped table-bordered table-hover">
+        <tr >
+            <td>Date</td>
+            <td><b>@DateTime.Now.ToLongDateString()</b></td>
+        </tr>
+        <tr>
+            <td>Todays Total Meal  </td>
+            <td><b>@ViewBag.totalMeal</b></td>
+        </tr>
+        <tr>
+            <td>Todays Total Lunch Meal </td>
+            <td><b>@ViewBag.TodaysTotalLunchMeal</b></td>
+        </tr>
+        <tr>
+            <td>Eligible Student's Meal Id for Lunch :</td>
+            <td>
+            
+            @foreach (var item in ViewBag.EligibleLunchId)
+            {
+                
+                <b>@item, </b>
+            }
+            </td>
+        </tr>
+        <tr>
+            <td>Todays Total Dinner Meal </td>
+            <td><b>@ViewBag.TodaysTotalDinnerMeal</b></td>
+        </tr>
+        <tr>
+            <td>Eligible Student's Meal Id for Dinner </td>
+            <td>
+                @foreach (var item in ViewBag.EligibleDinnerId)
+                {
+
+                    <b>@item, </b>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Guest Meal for Lunch </td>
+            <td><b>@ViewBag.TodaysTotalLunchGuestMeal</b></td>
+        </tr>
+        <tr>
+            <td>Guest Meal for Dinner </td>
+            <td><b>@ViewBag.TodaysTotalDinnerGuestMeal</b></td>
+        </tr>
+        <tr></tr>
+    </table>
+
+
+    <br />
+    <br/>
+    <h4>More Details</h4>
+    <table class="table table-striped table-bordered table-hover">
+        <tr style="background: #a9a9a9; color: white">
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lunch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dinner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LunchGuestMeal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DinnerGuestMeal)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lunch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dinner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LunchGuestMeal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DinnerGuestMeal)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+}
+@{
+    double totalPages = ViewBag.TotalPages;
+}
+<ul class="pagination">
+    @for (int i = 1; i <= totalPages; i++)
+    {
+        if (i == ViewBag.Page)
+        {
+            <li class="active">@Html.ActionLink(i.ToString() + " ", "Index", new {  Page = i })</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(i.ToString() + " ", "Index", new {  Page = i })</li>
+        }
+    }
+</ul>

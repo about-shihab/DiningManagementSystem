@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Dining Management System</title>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    </head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Dining Management System  ", "Index", "Home", new { Area = "Common" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("A"))
+                        {
+                            <li>@Html.ActionLink("Home", "Dashboard", new { Controller = "Home", Area = "Common" })</li>
+                            <li>@Html.ActionLink("Student List", "Index", new { Controller = "StudentList", Area = "Admin" })</li>
+                            <li>@Html.ActionLink("Payment", "Index", new { Controller = "Payment", Area = "Admin" })</li>
+                            <li>@Html.ActionLink("Expenses", "Index", new { Controller = "Expense", Area = "Admin" })</li>
+                            <li>@Html.ActionLink("Generate Meal", "Index", new { Controller = "Meal", Area = "Admin" })</li>
+                            <li>@Html.ActionLink("Bill", "Index", new { Controller = "GenerateBill", Area = "Admin" })</li>
+                        }
+
+                        if (User.IsInRole("U"))
+                        {
+                            <li>@Html.ActionLink("Home", "Dashboard", new { Controller = "Home", Area = "Common" })</li>
+                            <li>@Html.ActionLink("Manage Meal", "Index", new { Controller = "ManageMeal", Area = "Student" })</li>
+                            <li>@Html.ActionLink("Expense Details", "Index", new { Controller = "ExpenseDetails", Area = "Student" })</li>
+                        }
+                        if (User.IsInRole("A") || User.IsInRole("U"))
+                        {
+                            <li>@Html.ActionLink("Welcome "+ User.Identity.Name, "Index", new { Controller = "ChangeStudentPassword", Area = "Security" })</li>
+                            <li>@Html.ActionLink("SignOut", "SignOut", new { Controller = "Login", Area = "Security" })</li>
+
+                        }
+                    }
+                    else
+                    {
+                    <li>@Html.ActionLink("Home", "Index", new { Controller = "Home", Area = "Common" })</li>
+                        <li>@Html.ActionLink("Register", "Index", new { Controller = "Register", Area = "Security" })</li>
+                        <li>@Html.ActionLink("Login", "Index", new { Controller = "Login", Area = "Security" })</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        <div style="min-height: 500px">
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year Dining Management System</p>
+            <blockquote class="blockquote-reverse">
+                <p>Software Engineering Project By.</p>
+                <small>SHIHAB<cite title="Source Title"></cite></small>
+            </blockquote>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

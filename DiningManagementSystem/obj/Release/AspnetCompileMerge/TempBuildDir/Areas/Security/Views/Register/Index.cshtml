@@ -1,0 +1,110 @@
+﻿@model BOL.Student
+
+@{
+    ViewBag.Title = "Register";
+}
+<br />
+<br />
+<br/>
+<h5>Register here for new meal account</h5>
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["Msg"]
+    </div>
+}
+@if (TempData["Msg2"] != null)
+{
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Well done! @TempData["Msg2"]</strong> But your Id is Pending. To Active your meal, Please Pay cash to the Manager.
+            Your Meal Id is: <strong>@TempData["StudentId"]</strong>
+        </div>
+}
+
+@using (Html.BeginForm("Register","Register",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfrimPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.ConfrimPassword, new { @class = "form-control" })
+                <div class="text-danger">
+                    @TempData["Msg1"]
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeptId, "Department", new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("DeptId", (IEnumerable<SelectListItem>)ViewBag.DeptId, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DeptId, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Batch, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Batch, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Batch, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.RoomNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoomNo, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MobileNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MobileNo, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-2.2.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

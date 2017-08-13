@@ -1,0 +1,11 @@
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\BOL.dll.config
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\BOL.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\BOL.pdb
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\EntityFramework.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\EntityFramework.SqlServer.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\System.Web.Mvc.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\EntityFramework.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\EntityFramework.SqlServer.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Release\System.Web.Mvc.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\obj\Release\BOL.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\obj\Release\BOL.pdb

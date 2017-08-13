@@ -1,0 +1,186 @@
+﻿
+
+@{
+    ViewBag.Title = "Bill";
+}
+<br />
+<br />
+<br />
+<br/>
+<h5>Search by Meal Id for bill</h5>
+
+
+
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["Msg"]
+    </div>
+}
+@if (ViewBag.Month == 0)
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p>Please Select Month</p>
+    </div>
+}
+
+@using (Html.BeginForm("Create", "GenerateBill", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>Enter Meal Id &nbsp;&nbsp;   </b>
+            </div>
+            <div class="col-md-4">
+                @Html.TextBox("mealId", null, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>Month &nbsp;&nbsp;   </b>
+            </div>
+            <div class="col-md-4">
+                <select id="month" name="month" class="form-control">
+                    <option value="0">Select Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+
+    </div>
+}
+
+@if (TempData["Count"] != null && ViewBag.Month!=0)
+{
+    <table class="table table-striped table-bordered table-hover">
+
+        <tr>
+            <td>Month</td>
+            <td>
+@*                if we select month dropdown. then show specific name in month column*@
+                @if (ViewBag.Month == 1)
+                {
+                    <p>January</p>
+                }
+                @if (ViewBag.Month == 2)
+                {
+                    <p>February</p>
+                }
+                @if (ViewBag.Month == 3)
+                {
+                    <p>March</p>
+                }
+                @if (ViewBag.Month == 4)
+                {
+                    <p>April</p>
+                }
+                @if (ViewBag.Month == 5)
+                {
+                    <p>May</p>
+                }
+                @if (ViewBag.Month == 6)
+                {
+                    <p>June</p>
+                }
+                @if (ViewBag.Month == 7)
+                {
+                    <p>July</p>
+                }
+                @if (ViewBag.Month == 8)
+                {
+                    <p>August</p>
+                }
+                @if (ViewBag.Month == 9)
+                {
+                    <p>September</p>
+                }
+                @if (ViewBag.Month == 10)
+                {
+                    <p>October</p>
+                }
+                @if (ViewBag.Month == 11)
+                {
+                    <p>November</p>
+                }
+                @if (ViewBag.Month == 12)
+                {
+                    <p>December</p>
+                }
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>Meal Id</td>
+            <td>@TempData["studentId"]</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>@TempData["Name"]</td>
+        </tr>
+        <tr>
+            <td>Total Meal Number</td>
+            <td>@TempData["studentTotalMeal"]</td>
+        </tr>
+        <tr>
+            <td>Payed</td>
+            <td>@TempData["studentPayment"] BDT</td>
+        </tr>
+        <tr>
+            <td>Meal Rate</td>
+            <td>@TempData["MealRate"] BDT</td>
+        </tr>
+
+        <tr>
+            <td>Expense</td>
+            <td>@TempData["studentExpense"] BDT</td>
+        </tr>
+
+
+        @if (TempData["haveToPay"] != null)
+        {
+            <tr>
+                <td>This Student have to pay</td>
+                <td>@TempData["haveToPay"] BDT</td>
+            </tr>
+        }
+        @if (TempData["Receive"] != null)
+        {
+            <tr>
+                <td>This student will receive</td>
+                <td>@TempData["Receive"] BDT</td>
+            </tr>
+        }
+
+
+
+    </table>
+
+}

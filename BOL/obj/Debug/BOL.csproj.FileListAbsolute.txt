@@ -1,0 +1,12 @@
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\BOL.dll.config
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\BOL.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\BOL.pdb
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\EntityFramework.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\System.Web.Mvc.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\EntityFramework.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\bin\Debug\System.Web.Mvc.xml
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\obj\Debug\BOL.dll
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\obj\Debug\BOL.pdb
+D:\MyProjectAvijitSir\DiningManagementSystem\BOL\obj\Debug\BOL.csprojResolveAssemblyReference.cache

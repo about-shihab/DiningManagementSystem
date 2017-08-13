@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+
+<h2>title</h2>
+@if (TempData["Msg"] != null)
+{
+    <h4>@TempData["Msg"]</h4>
+    <h5>But your Id is Pending. To Active your meal, Please Pay cash to the Manager</h5>
+    <h2>Your Meal Id is: @ViewBag.StudentId</h2>
+}
+<h4></h4>

@@ -1,0 +1,62 @@
+﻿@model BOL.Student
+
+@{
+    ViewBag.Title = "Change Password";
+}
+<br />
+<br />
+<br/>
+<h5>Change Password here</h5>
+
+@using (Html.BeginForm("ChangePassword","ChangeStudentPassword",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true)
+
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["Msg"]
+    </div>
+}
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Old Password</b></div>
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password)
+                @TempData["Msgp"]
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.NewPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NewPassword)
+                @TempData["Msgn"]
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewConfrimPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.NewConfrimPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NewConfrimPassword)
+                @TempData["Msg1"]
+                @TempData["Msgc"]
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+
